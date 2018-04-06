@@ -297,55 +297,6 @@
 
 				}
 
-				Gravity() {
-					
-					var A = this.WorldCollision();
-					
-					if (A[0] == 0) { this.vel[1] -= 1; }
-
-				}
-				
-				WorldCollision() {
-
-					var x = Math.round(this.pos[0]-Map.origin[0]),
-						y = Math.round(this.pos[1]-Map.origin[1]),
-						z = Math.round(this.pos[2]-Map.origin[2]);
-
-					var px = Math.round(this.pos[0]-Map.origin[0]+.251),
-						py = Math.round(this.pos[1]-Map.origin[1]+.251),
-						pz = Math.round(this.pos[2]-Map.origin[2]+.251),
-						nx = Math.round(this.pos[0]-Map.origin[0]-.251),
-						ny = Math.round(this.pos[1]-Map.origin[1]-.251),
-						nz = Math.round(this.pos[2]-Map.origin[2]-.251);
-
-					var A = [0,0,0,0,0,0,0] //[Down,Up,Front,Back,Left,Right,Inside]
-
-					if (y in Map.val && x in Map.val[y] && z in Map.val[y][x]) {
-
-						if(ny in Map.val) { A[0] =  World.val[ny][x][z]; }
-						if(py in Map.val) { A[1] = World.val[py][x][z]; }
-
-						if(nx in Map.val[y]) { A[3] =  World.val[y][nx][z]; }
-						if(px in Map.val[y]) { A[2] = World.val[y][px][z]; }
-
-						if(nz in Map.val[y][x]) { A[4] =  World.val[y][x][nz]; }
-						if(pz in Map.val[y][x]) { A[5] = World.val[y][x][pz]; }
-
-						A[6] = World.val[y][x][z];
-						
-					}
-
-					return A;
-
-				}
-				
-				//Collision with another Entity class
-				EntityCollision(A) {
-					
-					
-					
-				}
-
 				Respawn() { this.pos = World.spawnpoint; }
 
 			}
