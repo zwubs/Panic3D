@@ -257,14 +257,6 @@
 					
 				}
 				
-				Distance(A) {
-					
-					return Math.sqrt(Math.pow(this.pos[0]-A.pos[0],2)+Math.pow(this.pos[1]-A.pos[1],2)+Math.pow(this.pos[1]-A.pos[1],2))
-					
-				}
-				
-				getType() { console.log(this.type); }
-				
 				add() { scene.add(this.mesh) }
 				remove() { scene.remove(this.mesh) }
 				
@@ -509,8 +501,8 @@
 				
 				s.Update();
 
-				//skyBox.rotation.x = clock.getElapsedTime()/100;
-				//skyBox.rotation.z = clock.getElapsedTime()/125;
+				skyBox.rotation.x = clock.getElapsedTime()/100;
+				skyBox.rotation.z = clock.getElapsedTime()/125;
 
 				renderer.render(scene, camera);
 
@@ -547,36 +539,17 @@
 						Grass: BlockTileset.UVCalc(0,0,16,16),
 						GrassSide: BlockTileset.UVCalc(16,0,16,16),
 						Dirt: BlockTileset.UVCalc(32,0,16,16),
-						Stone: BlockTileset.UVCalc(48,0,16,16),
-						Sand: BlockTileset.UVCalc(64,0,16,16),
-						Glass: BlockTileset.UVCalc(80,0,16,16),
 
-						Brick: BlockTileset.UVCalc(64,16,16,16),
-						Jumppad: BlockTileset.UVCalc(80,16,16,16),
 						StoneBrick: BlockTileset.UVCalc(0,48,16,16),
-						VineStoneBrick: BlockTileset.UVCalc(0,64,16,16),
 
-						LargeOakTop: BlockTileset.UVCalc(16,16,16,16),
-						LargeOakSide: BlockTileset.UVCalc(0,16,16,16),
 						OakTop: BlockTileset.UVCalc(56,32,8,8),
 						OakSide: BlockTileset.UVCalc(48,32,8,16),
-						OakLeaves: BlockTileset.UVCalc(32,16,16,16),
-						OakPlank: BlockTileset.UVCalc(48,16,16,16),
 
 						AspenTop: BlockTileset.UVCalc(36,32,4,4),
 						AspenSide: BlockTileset.UVCalc(32,32,4,16),
 						AspenLeaves: BlockTileset.UVCalc(36,36,1,1),
-						AspenPlank: BlockTileset.UVCalc(64,32,16,16),
-
-						SpruceTop: BlockTileset.UVCalc(56,48,8,8),
-						SpruceSide: BlockTileset.UVCalc(48,48,8,16),
-						SpruceLeaves: BlockTileset.UVCalc(32,48,16,16),
-						SprucePlank: BlockTileset.UVCalc(64,48,16,16),
 
 						Water: BlockTileset.UVCalc(0,32,16,16),
-						Snow: BlockTileset.UVCalc(96,0,16,16),
-						SnowSide: BlockTileset.UVCalc(112,0,16,16),
-
 					}
 					
 					/*
@@ -597,22 +570,9 @@
 								Tiles.GrassSide,
 							]
 						}),
-						Dirt: new Block({
-							uv: Tiles.Dirt,
-						}),
-						Stone: new Block({
-							uv: Tiles.Stone,
-						}),
-						Brick: new Block({
-							uv: Tiles.Brick,
-						}),
 						StoneBrick: new Block({
 							uv: Tiles.StoneBrick,
 						}),
-						VineStoneBrick: new Block({
-							uv: Tiles.VineStoneBrick,
-						}),
-
 						OakTrunk: new Block({
 							dim: [.5,1,.5],
 							uv: [
@@ -624,13 +584,6 @@
 								Tiles.OakSide,
 							],
 						}),
-						OakLeaves: new Block({
-							uv: Tiles.OakLeaves,
-						}),
-						OakPlank: new Block({
-							uv: Tiles.OakPlank,
-						}),
-
 						AspenTrunk: new Block({
 							dim: [.25,1,.25],
 							uv: [
@@ -647,54 +600,14 @@
 							offset: [0,.25,0],
 							uv: Tiles.AspenLeaves,
 						}),
-						AspenPlank: new Block({
-							uv: Tiles.AspenPlank,
-						}),
-
-						SpruceTrunk: new Block({
-							dim: [.5,1,.5],
-							uv: [
-								Tiles.SpruceSide,
-								Tiles.SpruceSide,
-								Tiles.SpruceTop,
-								Tiles.SpruceTop,
-								Tiles.SpruceSide,
-								Tiles.SpruceSide,
-							],
-						}),
-						SpruceLeaves: new Block({
-							uv: Tiles.SpruceLeaves,
-						}),
-
 						Water: new Block({
 							uv: Tiles.Water,
 							collision: false,
 						}),
-						Glass: new Block({
-							uv: Tiles.Glass,
-						}),
-						Jumppad: new Block({
-							uv: Tiles.Jumppad,
-						}),
-						Snow: new Block({
-							uv: Tiles.Snow,
-						}),
-						SnowGrass: new Block({
-							uv: [
-								Tiles.SnowSide,
-								Tiles.SnowSide,
-								Tiles.SnowTop,
-								Tiles.Dirt,
-								Tiles.SnowSide,
-								Tiles.SnowSide,
-							],
-						}),
-
 					}
 
-			    	s = new Player();
+			    		s = new Player();
 					s.pos = [0,2,0];
-					s.getType();
 					s.add();
 					s.Update();
 
@@ -712,9 +625,6 @@
 			    };
 
 			};
-
-			//THREE.DefaultLoadingManager.onLoad = function () {};
-			//THREE.DefaultLoadingManager.onProgress = function ( item, loaded, total ) {}
 
 		</script>
 
